@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  smacalcmsft:
+    container_name: smacalcmsft
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python smacalculator.py"
+    environment: 
+      - STOCK=MSFT
+    volumes:
+      - ./output:/output
+  smacalcaapl:
+    container_name: smacalcaapl
+    image: smaalpacatrader:latest
+    command: bash -c "python smacalculator.py"
+    environment: 
+      - STOCK=AAPL
+    volumes:
+      - ./output:/output
