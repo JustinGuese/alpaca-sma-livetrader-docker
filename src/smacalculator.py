@@ -193,6 +193,6 @@ sharper,sqn,nrtrades,avgdrawdown,maxdrawdown,annualreturnpct,monthlyreturnpct = 
 data = [[STOCK,bestpfast,bestpslow,sqn,annualreturnpct]]
 columns = ["stock","smafast","smaslow","sqn","annualreturnpct"]
 
-with open('output/%s.csv'%STOCK,'wb') as result_file:
+with open('./output/%s.csv'%STOCK,'w') as result_file:
     wr = csv.writer(result_file, dialect='excel')
     wr.writerows(data)
