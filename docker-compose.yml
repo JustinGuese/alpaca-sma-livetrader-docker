@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  smatradermsft:
+    container_name: smatradermsft
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python predictor.py"
+    env_file:
+      - .alpacalogin
+    environment: 
+      - STOCK=MSFT
+      - FastSMA=16
+      - SlowSMA=10
+      - MoneyDivide=2
+  smatraderaapl:
+    container_name: smatraderaapl
+    image: smaalpacatrader:latest
+    command: bash -c "python predictor.py"
+    env_file:
+      - .alpacalogin
+    environment: 
+      - STOCK=AAPL
+      - FastSMA=16
+      - SlowSMA=10
+      - MoneyDivide=2
