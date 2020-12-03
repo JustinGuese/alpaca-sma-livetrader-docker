@@ -1,1 +1,3 @@
 yfinance
+numpy
+alpaca_trade_api

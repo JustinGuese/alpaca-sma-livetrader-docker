@@ -1,6 +1,7 @@
 import yfinance as yf
 import os
 import numpy as np
+import alpaca_trade_api as tradeapi
 
 
 ALPACAUSER = os.environ["ALPACAUSER"]
