@@ -20,6 +20,6 @@ services:
       - .alpacalogin
     environment: 
       - STOCK=AAPL
-      - FastSMA=16
-      - SlowSMA=10
+      - FastSMA=14
+      - SlowSMA=38
       - MoneyDivide=2
