@@ -62,14 +62,14 @@ if data["signal"][-1] == data["signal"][-1]: # pytrixxx for nan
         if str(position.symbol) == STOCK:
             PositionsInStock = int(position.qty)
 
-    if data["signal"][-1] == "up":
+    if data["signal"][-1] == "up" or data["signal"][-2] == "down": # like it can happen that we miss a spot
         # buy
         if PositionsInStock == 0:
             print("BUY %s %d!"%(STOCK,howmany))
             longBuy(STOCK,howmany)
         else:
             print("Buy, but still have positions...")
-    elif data["signal"][-1] == "down":
+    elif data["signal"][-1] == "down" or data["signal"][-2] == "down":
         #sell
         if PositionsInStock > 0:
             print("SELL %s %d!"%(STOCK,PositionsInStock))
