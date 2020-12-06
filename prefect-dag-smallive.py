@@ -3,7 +3,7 @@ from prefect.tasks.shell import ShellTask
 from prefect.schedules import Schedule
 from prefect.schedules.clocks import CronClock
 
-schedule = Schedule(clocks=[CronClock("30 14-20 * * *")])
+schedule = Schedule(clocks=[CronClock("30 14-20 * * 1-5")])
 
 task = ShellTask(helper_script="cd /home/justin/docker/alpaca-sma-livetrader-docker")
 with Flow("SMALivetrader") as f:
