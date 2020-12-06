@@ -3,3 +3,4 @@ numpy
 pandas
 alpaca_trade_api
 backtrader
+elasticsearch

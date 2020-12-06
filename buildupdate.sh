@@ -1,0 +1,1 @@
+docker build -t smaalpacatrader:latest ./src
