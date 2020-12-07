@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: smatraderaapl
+  name: smatraderaapl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: smatraderaapl
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: smatraderaapl
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - python predictor.py
+        env:
+        - name: ALPACAPW
+          valueFrom:
+            configMapKeyRef:
+              key: ALPACAPW
+              name: alpacalogin
+        - name: ALPACAUSER
+          valueFrom:
+            configMapKeyRef:
+              key: ALPACAUSER
+              name: alpacalogin
+        - name: FastSMA
+          value: "14"
+        - name: MoneyDivide
+          value: "2"
+        - name: STOCK
+          value: AAPL
+        - name: SlowSMA
+          value: "38"
+        image: smaalpacatrader:latest
+        imagePullPolicy: ""
+        name: smatraderaapl
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

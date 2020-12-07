@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: smatradermsft
+  name: smatradermsft
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: smatradermsft
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: smatradermsft
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - python predictor.py
+        env:
+        - name: ALPACAPW
+          valueFrom:
+            configMapKeyRef:
+              key: ALPACAPW
+              name: alpacalogin
+        - name: ALPACAUSER
+          valueFrom:
+            configMapKeyRef:
+              key: ALPACAUSER
+              name: alpacalogin
+        - name: FastSMA
+          value: "16"
+        - name: MoneyDivide
+          value: "2"
+        - name: STOCK
+          value: MSFT
+        - name: SlowSMA
+          value: "10"
+        image: smaalpacatrader:latest
+        imagePullPolicy: ""
+        name: smatradermsft
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

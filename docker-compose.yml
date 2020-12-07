@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3"
 services:
   smatradermsft:
     container_name: smatradermsft
@@ -12,6 +12,8 @@ services:
       - FastSMA=16
       - SlowSMA=10
       - MoneyDivide=2
+    network_mode: "host"
+
   smatraderaapl:
     container_name: smatraderaapl
     image: smaalpacatrader:latest
@@ -23,3 +25,4 @@ services:
       - FastSMA=14
       - SlowSMA=38
       - MoneyDivide=2
+    network_mode: "host"

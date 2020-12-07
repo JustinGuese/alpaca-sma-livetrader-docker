@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  ALPACAPW: pPxPiYA2rAAR9o6kxs3qu4N9ad2h5P4IkwE7o18f
+  ALPACAUSER: PKZH2SPM7KBHLRTXB62P
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: smatraderaapl-alpacalogin
+  name: alpacalogin

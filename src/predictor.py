@@ -5,7 +5,7 @@ import alpaca_trade_api as tradeapi
 from elasticsearch import Elasticsearch
 from datetime import datetime
 
-es = Elasticsearch()
+es = Elasticsearch("192.168.0.187:9200")
 
 ALPACAUSER = os.environ["ALPACAUSER"]
 ALPACAPW = os.environ["ALPACAPW"]
