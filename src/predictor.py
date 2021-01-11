@@ -93,14 +93,14 @@ if data["signal"][-1] == data["signal"][-1]: # pytrixxx for nan
         if str(position.symbol) == STOCK:
             PositionsInStock = int(position.qty)
 
-    if data["signal"][-1] == "up" or data["signal"][-2] == "up": # like it can happen that we miss a spot
+    if data['FastSMA'][-1] > data['SlowSMA'][-1]: # like it can happen that we miss a spot
         # buy
         if PositionsInStock == 0:
             print("BUY %s %d!"%(STOCK,howmany))
             longBuy(STOCK,howmany,crntPrice)
         else:
             print("Buy, but still have positions...")
-    elif data["signal"][-1] == "down" or data["signal"][-2] == "down":
+    elif data['FastSMA'][-1] < data['SlowSMA'][-1]:
         #sell
         if PositionsInStock > 0:
             print("SELL %s %d!"%(STOCK,PositionsInStock))
@@ -111,6 +111,6 @@ if data["signal"][-1] == data["signal"][-1]: # pytrixxx for nan
         raise Exception("Not possible value: ",data["signal"][-1])
 else:
     print("no cross")
-    log2Elastic(STOCK,0,"nocross",crntPrice)
+    #log2Elastic(STOCK,0,"nocross",crntPrice)
             
 #print(data.tail(20))

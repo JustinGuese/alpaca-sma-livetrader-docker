@@ -1,4 +1,4 @@
-START = 'version: "3"\nservices:'
+START = 'version: "3"\nservices:\n'
 block = '''  smatrader%s:
     container_name: smatrader%s
     image: smaalpacatrader:latest

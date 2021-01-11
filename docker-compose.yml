@@ -1,5 +1,6 @@
 version: "3"
-services:  smatraderamzn:
+services:
+  smatraderamzn:
     container_name: smatraderamzn
     image: smaalpacatrader:latest
     build: ./src
