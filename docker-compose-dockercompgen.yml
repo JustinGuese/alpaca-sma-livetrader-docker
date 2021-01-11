@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  smadockercompgen:
+    container_name: smadockercompgen
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python generateDockerComposeFromSMACalc.py"
+    environment: 
+      - STOCK=MSFT
+    volumes:
+      - ./output:/output
+      - ./docker-compose.yml:/docker-compose.yml

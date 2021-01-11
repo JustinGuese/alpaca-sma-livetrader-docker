@@ -17,3 +17,27 @@ services:
       - STOCK=AAPL
     volumes:
       - ./output:/output
+  smacalcamzn:
+    container_name: smacalcamzn
+    image: smaalpacatrader:latest
+    command: bash -c "python smacalculator.py"
+    environment: 
+      - STOCK=AMZN
+    volumes:
+      - ./output:/output
+  smacalcgoog:
+    container_name: smacalcgoog
+    image: smaalpacatrader:latest
+    command: bash -c "python smacalculator.py"
+    environment: 
+      - STOCK=GOOG
+    volumes:
+      - ./output:/output
+  smacalcnflx:
+    container_name: smacalcnflx
+    image: smaalpacatrader:latest
+    command: bash -c "python smacalculator.py"
+    environment: 
+      - STOCK=NFLX
+    volumes:
+      - ./output:/output

@@ -1,5 +1,18 @@
 version: "3"
-services:
+services:  smatraderamzn:
+    container_name: smatraderamzn
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python predictor.py"
+    env_file:
+      - .alpacalogin
+    environment: 
+      - STOCK=AMZN
+      - FastSMA=2
+      - SlowSMA=3
+      - MoneyDivide=5
+    network_mode: "host"
+
   smatradermsft:
     container_name: smatradermsft
     image: smaalpacatrader:latest
@@ -9,20 +22,50 @@ services:
       - .alpacalogin
     environment: 
       - STOCK=MSFT
-      - FastSMA=16
-      - SlowSMA=10
-      - MoneyDivide=2
+      - FastSMA=17
+      - SlowSMA=8
+      - MoneyDivide=5
     network_mode: "host"
 
   smatraderaapl:
     container_name: smatraderaapl
     image: smaalpacatrader:latest
+    build: ./src
     command: bash -c "python predictor.py"
     env_file:
       - .alpacalogin
     environment: 
       - STOCK=AAPL
-      - FastSMA=14
-      - SlowSMA=38
-      - MoneyDivide=2
+      - FastSMA=8
+      - SlowSMA=48
+      - MoneyDivide=5
     network_mode: "host"
+
+  smatradergoog:
+    container_name: smatradergoog
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python predictor.py"
+    env_file:
+      - .alpacalogin
+    environment: 
+      - STOCK=GOOG
+      - FastSMA=14
+      - SlowSMA=12
+      - MoneyDivide=5
+    network_mode: "host"
+
+  smatradernflx:
+    container_name: smatradernflx
+    image: smaalpacatrader:latest
+    build: ./src
+    command: bash -c "python predictor.py"
+    env_file:
+      - .alpacalogin
+    environment: 
+      - STOCK=NFLX
+      - FastSMA=5
+      - SlowSMA=3
+      - MoneyDivide=5
+    network_mode: "host"
+
